@@ -4,24 +4,34 @@ import { data } from "./data";
 import { useSelector, useDispatch } from "react-redux";
 
 import SpendingList from "./SpendingList";
-import { formatBudget } from "../redux/actions/budgetActions";
+import {
+  formatBudget,
+  reduceBudget,
+  newReduceExpense,
+} from "../redux/actions/budgetActions";
+import { Button } from "react-bootstrap";
 
 const IncomeVisuals = () => {
   const changedTheme = {
     textColor: "#ffffff",
   };
 
-  const budgetAmount = useSelector((state) => state.budget);
-  const { budget } = budgetAmount;
+  const budgetAmount = useSelector((state) => state.budgetAmount);
+  let { budget } = budgetAmount;
+  let plannedBudget = 10000;
   const dispatch = useDispatch();
-
+  const testHandler = () => {};
   useEffect(() => {
     dispatch(formatBudget());
-    console.log(budget);
-  }, [budget, dispatch]);
+    dispatch(reduceBudget());
+  }, [dispatch]);
   return (
     <>
-      <h1 style={{ color: "white" }}>Budget: {budget}</h1>
+      <h1 style={{ color: "white", marginTop: "5px" }}>
+        Budget: {plannedBudget}
+      </h1>
+      <h3 style={{ color: "white", marginTop: "5px" }}>Left: {budget}</h3>
+      {budget < 0 && <h4 className="text-muted">Over budget</h4>}
       <ResponsivePie
         data={data}
         margin={{ top: 40, right: 80, bottom: 80, left: 80 }}

@@ -4,5 +4,5 @@ import { budgetReducer } from "./budgetReducer";
 
 export default combineReducers({
   expensesList: expenseReducer,
-  budget: budgetReducer,
+  budgetAmount: budgetReducer,
 });

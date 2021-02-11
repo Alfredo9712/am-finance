@@ -1,12 +1,20 @@
 let budget = 0;
-const intitialState = {
-  budget,
-};
 
-export function budgetReducer(state = intitialState, action) {
+export function budgetReducer(state = budget, action) {
   switch (action.type) {
     case "GET_BUDGET":
       return {
+        ...state,
+        budget: action.payload,
+      };
+    case "REDUCE_BUDGET":
+      return {
+        ...state,
+        budget: action.payload,
+      };
+    case "NEW_REDUCE_BUDGET":
+      return {
+        ...state,
         budget: action.payload,
       };
     default:
