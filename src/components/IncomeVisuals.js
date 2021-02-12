@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ResponsivePie } from "@nivo/pie";
-import { data } from "./data";
-import { useSelector, useDispatch } from "react-redux";
 
+import { useSelector, useDispatch } from "react-redux";
 import SpendingList from "./SpendingList";
 import { initializeBudget } from "../redux/actions/budgetActions";
 import { Button } from "react-bootstrap";
@@ -10,6 +9,8 @@ import { Button } from "react-bootstrap";
 const IncomeVisuals = () => {
   const dispatch = useDispatch();
   const budgetAmount = useSelector((state) => state.budgetAmount);
+  const pieChart = useSelector((state) => state.pieChart);
+  const { data } = pieChart;
   const changedTheme = {
     textColor: "#ffffff",
   };
@@ -67,7 +68,7 @@ const IncomeVisuals = () => {
               {
                 on: "hover",
                 style: {
-                  itemTextColor: "#ffffff",
+                  itemTextColor: "#97A0A6",
                 },
               },
             ],

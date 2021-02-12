@@ -1,7 +1,8 @@
 import React, { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { addExpense } from "../redux/actions/expenseActions";
-import { newReduceExpense, reduceBudget } from "../redux/actions/budgetActions";
+import { reduceBudget } from "../redux/actions/budgetActions";
+import { populatePieChart } from "../redux/actions/pieChartActions";
 import { Modal, Button, InputGroup, FormControl, Alert } from "react-bootstrap";
 
 const AddSpending = ({ category }) => {
@@ -16,8 +17,6 @@ const AddSpending = ({ category }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const test = () => console.log(category);
-
   const addExpenseHandler = () => {
     if (expenseRef.current.value === "" || labelRef.current.value === "") {
       setText("Invalid Input");
@@ -28,13 +27,18 @@ const AddSpending = ({ category }) => {
     } else {
       handleClose();
       dispatch(
-        addExpense(expenseRef.current.value, labelRef.current.value, category)
+        addExpense(
+          Number(expenseRef.current.value),
+          labelRef.current.value,
+          category
+        )
       );
-      dispatch(reduceBudget(expenseRef.current.value));
+      //next time add number to it that way it wont be a string
+      dispatch(reduceBudget(Number(expenseRef.current.value)));
       // dispatch(newReduceExpense(expenseRef.current.value));
 
-      test();
       setInvalidExpense(false);
+      dispatch(populatePieChart());
     }
   };
 
