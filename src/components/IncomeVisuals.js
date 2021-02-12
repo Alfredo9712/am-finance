@@ -14,7 +14,7 @@ const IncomeVisuals = () => {
   const changedTheme = {
     textColor: "#ffffff",
   };
-  let input = 700;
+  let input = 2000;
   const [plannedBudget, setPlannedBudget] = useState(0);
 
   // let { budget } = budgetAmount;
@@ -27,9 +27,11 @@ const IncomeVisuals = () => {
   return (
     <>
       <h1 style={{ color: "white", marginTop: "5px" }}>
-        Budget: {plannedBudget}
+        Budget: {plannedBudget.toLocaleString()}
       </h1>
-      <h3 style={{ color: "white", marginTop: "5px" }}>Left: {budgetAmount}</h3>
+      <h3 style={{ color: "white", marginTop: "5px" }}>
+        Left: {budgetAmount.toLocaleString()}
+      </h3>
       {/* {budget < 0 && <h4 className="text-muted">Over budget</h4>} */}
       <ResponsivePie
         data={data}

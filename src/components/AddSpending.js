@@ -52,7 +52,9 @@ const AddSpending = ({ category }) => {
         {invalidExpense === true && <Alert variant="danger">{text}</Alert>}
 
         <Modal.Header closeButton>
-          <Modal.Title>Add Expense</Modal.Title>
+          <Modal.Title>
+            Add {category.charAt(0).toUpperCase() + category.slice(1)} Expense
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <InputGroup className="mb-3">
@@ -88,7 +90,7 @@ const AddSpending = ({ category }) => {
             Close
           </Button>
           <Button variant="primary" onClick={addExpenseHandler}>
-            ADD
+            Add
           </Button>
         </Modal.Footer>
       </Modal>
