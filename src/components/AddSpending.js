@@ -30,7 +30,8 @@ const AddSpending = ({ category }) => {
       dispatch(
         addExpense(expenseRef.current.value, labelRef.current.value, category)
       );
-      dispatch(newReduceExpense(expenseRef.current.value));
+      dispatch(reduceBudget(expenseRef.current.value));
+      // dispatch(newReduceExpense(expenseRef.current.value));
 
       test();
       setInvalidExpense(false);

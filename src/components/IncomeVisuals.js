@@ -1,37 +1,35 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { ResponsivePie } from "@nivo/pie";
 import { data } from "./data";
 import { useSelector, useDispatch } from "react-redux";
 
 import SpendingList from "./SpendingList";
-import {
-  formatBudget,
-  reduceBudget,
-  newReduceExpense,
-} from "../redux/actions/budgetActions";
+import { initializeBudget } from "../redux/actions/budgetActions";
 import { Button } from "react-bootstrap";
 
 const IncomeVisuals = () => {
+  const dispatch = useDispatch();
+  const budgetAmount = useSelector((state) => state.budgetAmount);
   const changedTheme = {
     textColor: "#ffffff",
   };
+  let input = 700;
+  const [plannedBudget, setPlannedBudget] = useState(0);
 
-  const budgetAmount = useSelector((state) => state.budgetAmount);
-  let { budget } = budgetAmount;
-  let plannedBudget = 10000;
-  const dispatch = useDispatch();
-  const testHandler = () => {};
-  useEffect(() => {
-    dispatch(formatBudget());
-    dispatch(reduceBudget());
-  }, [dispatch]);
+  // let { budget } = budgetAmount;
+
+  const testHandler = () => {
+    dispatch(initializeBudget(input));
+    setPlannedBudget(input);
+  };
+
   return (
     <>
       <h1 style={{ color: "white", marginTop: "5px" }}>
         Budget: {plannedBudget}
       </h1>
-      <h3 style={{ color: "white", marginTop: "5px" }}>Left: {budget}</h3>
-      {budget < 0 && <h4 className="text-muted">Over budget</h4>}
+      <h3 style={{ color: "white", marginTop: "5px" }}>Left: {budgetAmount}</h3>
+      {/* {budget < 0 && <h4 className="text-muted">Over budget</h4>} */}
       <ResponsivePie
         data={data}
         margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
@@ -77,6 +75,9 @@ const IncomeVisuals = () => {
         ]}
       />
       <SpendingList />
+      {/* this will be used before the budget page is set up all its for is to
+      intialize budget */}
+      <Button onClick={testHandler}>Click for budget</Button>
     </>
   );
 };
