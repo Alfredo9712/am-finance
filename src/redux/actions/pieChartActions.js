@@ -28,11 +28,6 @@ export const populatePieChart = () => async (dispatch, getState) => {
     }
   });
 
-  let counter = 0;
-  expenses.map((x) => {
-    counter = counter + Number(x.expense);
-  });
-
   dispatch({
     type: "POPULATE_PIE_CHART",
     payload: [
@@ -75,4 +70,5 @@ export const populatePieChart = () => async (dispatch, getState) => {
       },
     ],
   });
+  localStorage.setItem("pieChart", JSON.stringify(getState().pieChart.data));
 };

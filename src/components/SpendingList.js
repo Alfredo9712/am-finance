@@ -150,7 +150,7 @@ const SpendingList = () => {
         </Col>
       </Row>
       {/* .............................................................................. */}
-      <Row>
+      <Row style={{ marginBottom: "5%" }}>
         <Col md={6} className="mobile-space" style={{ marginTop: "15px" }}>
           <ListGroup>
             <ListGroup.Item className="text-center">

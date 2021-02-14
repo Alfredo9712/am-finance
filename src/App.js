@@ -11,12 +11,12 @@ function App() {
       <Router>
         <NavigationBar />
         <Switch>
+          <Route path="/" exact>
+            <StartScreen />
+          </Route>
           <Container>
             <Route path="/budget">
               <Homescreen />
-            </Route>
-            <Route path="/" exact>
-              <StartScreen />
             </Route>
           </Container>
         </Switch>

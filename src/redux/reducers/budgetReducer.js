@@ -1,6 +1,7 @@
-// let budget = 0;
-
-export function budgetReducer(state = 0, action) {
+const budget = localStorage.getItem("budgetAmount")
+  ? JSON.parse(localStorage.getItem("budgetAmount"))
+  : 0;
+export function budgetReducer(state = budget, action) {
   switch (action.type) {
     case "INITIALIZE_BUDGET":
       return (state = action.payload);

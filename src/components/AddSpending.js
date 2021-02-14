@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addExpense } from "../redux/actions/expenseActions";
 import { reduceBudget } from "../redux/actions/budgetActions";
 import { populatePieChart } from "../redux/actions/pieChartActions";
@@ -9,6 +9,7 @@ const AddSpending = ({ category }) => {
   const [show, setShow] = useState(false);
   const [invalidExpense, setInvalidExpense] = useState(false);
   const [text, setText] = useState("");
+  const budgetAmount = useSelector((state) => state.budgetAmount);
   const dispatch = useDispatch();
 
   const expenseRef = useRef();
@@ -44,7 +45,12 @@ const AddSpending = ({ category }) => {
 
   return (
     <>
-      <Button variant="dark" block onClick={handleShow}>
+      <Button
+        variant="dark"
+        block
+        onClick={handleShow}
+        disabled={budgetAmount === 0}
+      >
         <i className="fas fa-plus"></i> Add expense
       </Button>
 

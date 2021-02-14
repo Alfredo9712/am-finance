@@ -1,5 +1,9 @@
+const data = localStorage.getItem("expenseList")
+  ? JSON.parse(localStorage.getItem("expenseList"))
+  : [];
+
 const initialState = {
-  data: [],
+  data,
   // data: [
   //   { expense: 145, category: "housing", label: "hoa" },
   //   { expense: 86, category: "food", label: "groceries" },

@@ -6,6 +6,7 @@ export const initializeBudget = (budgetAmount) => async (
     type: "INITIALIZE_BUDGET",
     payload: budgetAmount,
   });
+  localStorage.setItem("budgetAmount", JSON.stringify(getState().budgetAmount));
 };
 
 export const reduceBudget = (amount) => async (dispatch, getState) => {
@@ -15,6 +16,7 @@ export const reduceBudget = (amount) => async (dispatch, getState) => {
     type: "REDUCE_BUDGET",
     payload: num,
   });
+  localStorage.setItem("budgetAmount", JSON.stringify(getState().budgetAmount));
 };
 
 // export const reduceBudget = () => async (dispatch, getState) => {

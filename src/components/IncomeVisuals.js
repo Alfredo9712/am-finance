@@ -1,27 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { ResponsivePie } from "@nivo/pie";
-
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import SpendingList from "./SpendingList";
-import { initializeBudget } from "../redux/actions/budgetActions";
-import { Button } from "react-bootstrap";
 
 const IncomeVisuals = () => {
-  const dispatch = useDispatch();
   const budgetAmount = useSelector((state) => state.budgetAmount);
+  const plannedBudget = useSelector((state) => state.plannedBudget);
+
   const pieChart = useSelector((state) => state.pieChart);
   const { data } = pieChart;
   const changedTheme = {
     textColor: "#ffffff",
-  };
-  let input = 2000;
-  const [plannedBudget, setPlannedBudget] = useState(0);
-
-  // let { budget } = budgetAmount;
-
-  const testHandler = () => {
-    dispatch(initializeBudget(input));
-    setPlannedBudget(input);
   };
 
   return (
@@ -32,7 +21,7 @@ const IncomeVisuals = () => {
       <h3 style={{ color: "white", marginTop: "5px" }}>
         Left: {budgetAmount.toLocaleString()}
       </h3>
-      {/* {budget < 0 && <h4 className="text-muted">Over budget</h4>} */}
+      {budgetAmount < 0 && <h5 style={{ color: "red" }}>Over budget</h5>}
       <ResponsivePie
         data={data}
         margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
@@ -80,7 +69,6 @@ const IncomeVisuals = () => {
       <SpendingList />
       {/* this will be used before the budget page is set up all its for is to
       intialize budget */}
-      <Button onClick={testHandler}>Click for budget</Button>
     </>
   );
 };
