@@ -32,8 +32,11 @@ body {
     margin-top: 15px;
   }
 }
-
-.test {
-  padding: 2%;
-  margin: 2%;
+@media screen and (max-width: 900px) {
+  .colBot {
+    margin-bottom: -10%;
+  }
+}
+.colBot {
+  margin-bottom: -2.3%;
 }

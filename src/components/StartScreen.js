@@ -17,7 +17,12 @@ const StartScreen = () => {
   };
 
   let input = 2000;
-
+  let spentAmount = plannedBudget - budgetAmount;
+  let percentageUtilized = Math.round(
+    ((plannedBudget - budgetAmount) / plannedBudget) * 100
+  )
+    ? Math.round(((plannedBudget - budgetAmount) / plannedBudget) * 100)
+    : 0;
   const testHandler = () => {
     dispatch(initializeBudget(input));
     dispatch(initializePlannedBudget(input));
@@ -26,7 +31,7 @@ const StartScreen = () => {
     <>
       <Container className="startContainer">
         <Row>
-          <Col lg={6}>
+          <Col lg={6} className="colBot">
             <Jumbotron
               style={{
                 backgroundColor: "#262a32",
@@ -46,7 +51,7 @@ const StartScreen = () => {
               </h1>
               <div
                 style={{
-                  height: 250,
+                  height: 277,
                   marginLeft: "auto",
                   marginRight: "auto",
                   marginTop: "0px",
@@ -96,27 +101,48 @@ const StartScreen = () => {
                 />
               </div>
               <Row style={{ textAlign: "center" }}>
-                <Col sm={4}>
+                <Col xs={4}>
                   <h5 style={{ color: "white" }}>Planned</h5>
-                  <Row>
-                    <Col>{plannedBudget}</Col>
-                  </Row>
-                </Col>
-                <Col sm={4}>
-                  <h5 style={{ color: "white" }}>Spent</h5>
-
-                  <Row>
-                    <Col>{plannedBudget - budgetAmount}</Col>
-                  </Row>
-                </Col>
-                <Col sm={4}>
-                  <h5 style={{ color: "white" }}>Utilized</h5>
                   <Row>
                     <Col>
                       {" "}
-                      {((plannedBudget - budgetAmount) / plannedBudget) * 100}
+                      <h5 style={{ marginRight: "3%", color: "white" }}>
+                        {" "}
+                        ${plannedBudget.toLocaleString()}
+                      </h5>
                     </Col>
                   </Row>
+                </Col>
+                <Col xs={4}>
+                  <h5 style={{ color: "white" }}>Spent</h5>
+
+                  <Row>
+                    <Col>
+                      {" "}
+                      <h5 style={{ marginRight: "3%", color: "white" }}>
+                        ${spentAmount.toLocaleString()}{" "}
+                      </h5>
+                    </Col>
+                  </Row>
+                </Col>
+                <Col xs={4}>
+                  <h5 style={{ color: "white" }}>Utilized</h5>
+                  <Row>
+                    <Col>
+                      <h5 style={{ color: "white" }}> {percentageUtilized}%</h5>
+                    </Col>
+                  </Row>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <Link
+                    to="/budget"
+                    className="btn btn-primary"
+                    style={{ display: "block", marginTop: "3%" }}
+                  >
+                    Manage budget <i className="fas fa-chart-pie"></i>
+                  </Link>
                 </Col>
               </Row>
             </Jumbotron>
@@ -137,9 +163,9 @@ const StartScreen = () => {
       </Container>
       <Row>
         <Col>
-          {/* <Button onClick={testHandler} style={{ marginLeft: "50%" }}>
+          <Button onClick={testHandler} style={{ marginLeft: "50%" }}>
             Click for budget
-          </Button> */}
+          </Button>
         </Col>
       </Row>
     </>

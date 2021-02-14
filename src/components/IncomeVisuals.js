@@ -2,6 +2,7 @@ import React from "react";
 import { ResponsivePie } from "@nivo/pie";
 import { useSelector } from "react-redux";
 import SpendingList from "./SpendingList";
+import { Link } from "react-router-dom";
 
 const IncomeVisuals = () => {
   const budgetAmount = useSelector((state) => state.budgetAmount);
@@ -16,11 +17,14 @@ const IncomeVisuals = () => {
   return (
     <>
       <h1 style={{ color: "white", marginTop: "5px" }}>
-        Budget: {plannedBudget.toLocaleString()}
+        Budget: ${plannedBudget.toLocaleString()}
       </h1>
       <h3 style={{ color: "white", marginTop: "5px" }}>
-        Left: {budgetAmount.toLocaleString()}
+        Left: ${budgetAmount.toLocaleString()}
       </h3>
+      <Link to="/" className="btn btn-primary">
+        Go back
+      </Link>
       {budgetAmount < 0 && <h5 style={{ color: "red" }}>Over budget</h5>}
       <ResponsivePie
         data={data}
