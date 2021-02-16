@@ -5,6 +5,7 @@ import { initializePlannedBudget } from "../redux/actions/plannedBudget";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { ResponsivePie } from "@nivo/pie";
+import MonthlyCard from "./MonthlyCard";
 const StartScreen = () => {
   const dispatch = useDispatch();
   const pieChart = useSelector((state) => state.pieChart);
@@ -55,6 +56,7 @@ const StartScreen = () => {
                   marginLeft: "auto",
                   marginRight: "auto",
                   marginTop: "0px",
+                  color: "black",
                 }}
               >
                 <ResponsivePie
@@ -72,6 +74,7 @@ const StartScreen = () => {
                   radialLabelsTextColor="#333333"
                   radialLabelsLinkColor={{ from: "color" }}
                   sliceLabelsSkipAngle={10}
+                  // isInteractive={false}
                   sliceLabelsTextColor="#333333"
                   legends={[
                     {
@@ -92,7 +95,7 @@ const StartScreen = () => {
                         {
                           on: "hover",
                           style: {
-                            itemTextColor: "#000",
+                            itemTextColor: "#97A0A6",
                           },
                         },
                       ],
@@ -148,15 +151,15 @@ const StartScreen = () => {
             </Jumbotron>
           </Col>
           <Col lg={6}>
-            <Jumbotron style={{ backgroundColor: "#262a32", color: "white" }}>
-              <h1>Hello, world!</h1>
-              <p>
-                This is a simple hero unit, a simple jumbotron-style component
-                for calling extra attention to featured content or information.
-              </p>
-              <p>
-                <Button variant="primary">Learn more</Button>
-              </p>
+            <Jumbotron
+              style={{
+                backgroundColor: "#262a32",
+                color: "white",
+                paddingTop: "0",
+                height: "99%",
+              }}
+            >
+              <MonthlyCard />
             </Jumbotron>
           </Col>
         </Row>

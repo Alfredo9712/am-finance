@@ -52,7 +52,7 @@ const IncomeVisuals = () => {
             itemsSpacing: 0,
             itemWidth: 100,
             itemHeight: 18,
-            textColor: "#ffffff",
+            textColor: "#999",
             itemTextColor: "#ffffff",
 
             itemDirection: "top-to-bottom",
