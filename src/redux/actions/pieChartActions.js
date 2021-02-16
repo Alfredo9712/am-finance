@@ -72,3 +72,10 @@ export const populatePieChart = () => async (dispatch, getState) => {
   });
   localStorage.setItem("pieChart", JSON.stringify(getState().pieChart.data));
 };
+
+export const clearPieChart = () => async (dispatch, getState) => {
+  dispatch({
+    type: "CLEAR_PIE_CHART",
+  });
+  localStorage.setItem("pieChart", JSON.stringify(getState().pieChart.data));
+};

@@ -1,19 +1,34 @@
 import React from "react";
 import { ResponsivePie } from "@nivo/pie";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import SpendingList from "./SpendingList";
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
+import { clearExpenses } from "../redux/actions/expenseActions";
+import { clearPieChart } from "../redux/actions/pieChartActions";
+import { clearBudget } from "../redux/actions/budgetActions";
+import { clearPlannedBudget } from "../redux/actions/plannedBudget";
+import { addMonthlyExpense } from "../redux/actions/monthlyExpensesActions";
+import {} from "../redux/actions/plannedBudget";
 
 const IncomeVisuals = () => {
   const budgetAmount = useSelector((state) => state.budgetAmount);
   const plannedBudget = useSelector((state) => state.plannedBudget);
-
+  let spentAmount = plannedBudget - budgetAmount;
   const pieChart = useSelector((state) => state.pieChart);
+  const dispatch = useDispatch();
   const { data } = pieChart;
   const changedTheme = {
     textColor: "#ffffff",
   };
 
+  const clearExpensesHandler = () => {
+    dispatch(clearExpenses());
+    dispatch(clearPieChart());
+    dispatch(clearBudget());
+    dispatch(clearPlannedBudget());
+    dispatch(addMonthlyExpense(Number(spentAmount)));
+  };
   return (
     <>
       <h1 style={{ color: "white", marginTop: "5px" }}>
@@ -73,6 +88,7 @@ const IncomeVisuals = () => {
       <SpendingList />
       {/* this will be used before the budget page is set up all its for is to
       intialize budget */}
+      <Button onClick={clearExpensesHandler}>New Month</Button>
     </>
   );
 };

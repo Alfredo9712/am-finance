@@ -7,12 +7,8 @@ export function budgetReducer(state = budget, action) {
       return (state = action.payload);
     case "REDUCE_BUDGET":
       return state - action.payload;
-
-    // case "NEW_REDUCE_BUDGET":
-    //   return {
-    //     ...state,
-    //     budget: action.payload,
-    //   };
+    case "CLEAR_BUDGET":
+      return (state = 0);
     default:
       return state;
   }

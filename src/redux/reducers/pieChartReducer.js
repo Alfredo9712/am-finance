@@ -19,6 +19,17 @@ export function pieChartReducer(state = initialState, action) {
       return {
         data: action.payload,
       };
+    case "CLEAR_PIE_CHART":
+      return {
+        data: [
+          {
+            id: "Empty",
+            label: "Add data to visualize expens",
+
+            color: "hsl(348, 70%, 50%)",
+          },
+        ],
+      };
 
     default:
       return state;
