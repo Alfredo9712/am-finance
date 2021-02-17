@@ -2,6 +2,10 @@ body {
   background-color: #262a32;
 }
 
+.check {
+  color: "#42D9C5";
+}
+
 .navbar {
   padding: 1rem 1rem;
 }
@@ -32,11 +36,30 @@ body {
     margin-top: 15px;
   }
 }
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 700px) {
   .colBot {
-    margin-bottom: -10%;
+    margin-bottom: 0.2%;
   }
 }
-.colBot {
-  margin-bottom: -2.3%;
+@media screen and (min-width: 800px) {
+  .padLeft {
+    padding-left: 2.2%;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .colBot {
+    padding-right: 2.2%;
+  }
+}
+@media screen and (min-width: 990px) {
+  .colBot {
+    padding-right: 0.2%;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .padLeft {
+    padding-left: 0.2%;
+  }
 }

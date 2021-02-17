@@ -52,7 +52,7 @@ const MonthlyCard = () => {
         }}
       >
         {" "}
-        Montly expenses
+        Expense history
       </h1>
 
       {data.length === 0 ? (
@@ -60,7 +60,7 @@ const MonthlyCard = () => {
           style={{
             color: "white",
             textAlign: "center",
-            paddingTop: "5%",
+            paddingTop: "36%",
             marginBottom: "0",
           }}
         >
@@ -68,7 +68,7 @@ const MonthlyCard = () => {
           Past months spending will show here
         </h5>
       ) : (
-        <>
+        <div style={{ marginTop: "8%", height: 277 }}>
           <ResponsiveBar
             data={data}
             keys={["amount"]}
@@ -95,7 +95,7 @@ const MonthlyCard = () => {
               tickRotation: 0,
               legend: "Amount",
               legendPosition: "middle",
-              legendOffset: -40,
+              legendOffset: -55,
             }}
             theme={theme}
             labelSkipWidth={12}
@@ -129,7 +129,7 @@ const MonthlyCard = () => {
             motionStiffness={90}
             motionDamping={15}
           />
-        </>
+        </div>
       )}
     </div>
   );

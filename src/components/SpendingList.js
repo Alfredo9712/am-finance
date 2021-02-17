@@ -11,7 +11,7 @@ const SpendingList = () => {
   const { data } = expensesList;
 
   return (
-    <Container fluid className="mt-1">
+    <Container fluid className="mt-1" style={{ marginBottom: "1000px" }}>
       <Row>
         <Col md={6}>
           <ListGroup>

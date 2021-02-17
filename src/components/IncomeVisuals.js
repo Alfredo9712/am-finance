@@ -14,6 +14,8 @@ import {} from "../redux/actions/plannedBudget";
 const IncomeVisuals = () => {
   const budgetAmount = useSelector((state) => state.budgetAmount);
   const plannedBudget = useSelector((state) => state.plannedBudget);
+  const expensesList = useSelector((state) => state.expensesList);
+
   let spentAmount = plannedBudget - budgetAmount;
   const pieChart = useSelector((state) => state.pieChart);
   const dispatch = useDispatch();
@@ -85,10 +87,17 @@ const IncomeVisuals = () => {
           },
         ]}
       />
+      <Button
+        onClick={clearExpensesHandler}
+        className="bg-transparent check"
+        style={{ marginTop: "0" }}
+        disabled={expensesList.data.length === 0}
+      >
+        New Month <i class="fas fa-check-circle"></i>
+      </Button>
       <SpendingList />
       {/* this will be used before the budget page is set up all its for is to
       intialize budget */}
-      <Button onClick={clearExpensesHandler}>New Month</Button>
     </>
   );
 };
