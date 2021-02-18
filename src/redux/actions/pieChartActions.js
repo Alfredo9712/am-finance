@@ -45,11 +45,12 @@ export const populatePieChart = () => async (dispatch, getState) => {
         color: "hsl(348, 70%, 50%)",
       },
       {
-        id: "Transportation",
-        label: "Transportation",
-        value: transportationExpenses,
-        color: "hsl(185, 70%, 50%)",
+        id: "Personal",
+        label: "Personal",
+        value: personaleExpenses,
+        color: "hsl(251, 70%, 50%)",
       },
+
       {
         id: "Utilities",
         label: "Utilities",
@@ -62,11 +63,12 @@ export const populatePieChart = () => async (dispatch, getState) => {
         value: debtExpenses,
         color: "hsl(251, 70%, 50%)",
       },
+
       {
-        id: "Personal",
-        label: "Personal",
-        value: personaleExpenses,
-        color: "hsl(251, 70%, 50%)",
+        id: "Transportation",
+        label: "Transportation",
+        value: transportationExpenses,
+        color: "hsl(185, 70%, 50%)",
       },
     ],
   });

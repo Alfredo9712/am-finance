@@ -22,7 +22,7 @@ const DeleteAll = () => {
     dispatch(clearMonthlyExpense());
   };
   return (
-    <div>
+    <div style={{ marginBottom: "5%" }}>
       <Button
         variant="danger"
         onClick={handleShow}

@@ -29,7 +29,7 @@ const StartScreen = () => {
 
   return (
     <>
-      {budgetAmount === 0 ? (
+      {plannedBudget === 0 ? (
         <InitialPage />
       ) : (
         <>
@@ -88,8 +88,8 @@ const StartScreen = () => {
                           anchor: "bottom-left",
                           direction: "column",
                           justify: false,
-                          translateX: -70,
-                          translateY: 5,
+                          translateX: -67,
+                          translateY: 4,
                           itemsSpacing: 2,
                           itemWidth: 100,
                           itemHeight: 18,
@@ -129,7 +129,12 @@ const StartScreen = () => {
                       <Row>
                         <Col>
                           {" "}
-                          <h5 style={{ marginRight: "3%", color: "white" }}>
+                          <h5
+                            style={{ marginRight: "3%" }}
+                            className={` ${
+                              spentAmount > plannedBudget ? "red" : "white"
+                            }`}
+                          >
                             ${spentAmount.toLocaleString()}{" "}
                           </h5>
                         </Col>

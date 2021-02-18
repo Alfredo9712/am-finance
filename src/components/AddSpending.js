@@ -9,7 +9,7 @@ const AddSpending = ({ category }) => {
   const [show, setShow] = useState(false);
   const [invalidExpense, setInvalidExpense] = useState(false);
   const [text, setText] = useState("");
-  const budgetAmount = useSelector((state) => state.budgetAmount);
+  const plannedBudget = useSelector((state) => state.plannedBudget);
   const dispatch = useDispatch();
 
   const expenseRef = useRef();
@@ -49,7 +49,7 @@ const AddSpending = ({ category }) => {
         variant="dark"
         block
         onClick={handleShow}
-        disabled={budgetAmount === 0}
+        disabled={plannedBudget === 0}
       >
         <i className="fas fa-plus"></i> Add expense
       </Button>

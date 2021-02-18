@@ -89,11 +89,11 @@ const SpendingList = () => {
         <Col md={6} className="mobile-space" style={{ marginTop: "15px" }}>
           <ListGroup>
             <ListGroup.Item className="text-center">
-              <h3>Transportation</h3>
+              <h3>Personal</h3>
             </ListGroup.Item>
 
             {data
-              .filter((x) => x.category === "transportation")
+              .filter((x) => x.category === "personal")
               .map((x) => (
                 <ListGroup.Item>
                   <Row>
@@ -111,8 +111,9 @@ const SpendingList = () => {
                   </Row>
                 </ListGroup.Item>
               ))}
+
             <ListGroup.Item>
-              <AddSpending category={"transportation"} />
+              <AddSpending category={"personal"} />
             </ListGroup.Item>
           </ListGroup>
         </Col>
@@ -185,11 +186,10 @@ const SpendingList = () => {
         <Col md={6} className="mobile-space" style={{ marginTop: "15px" }}>
           <ListGroup>
             <ListGroup.Item className="text-center">
-              <h3>Personal</h3>
+              <h3>Transportation</h3>
             </ListGroup.Item>
-
             {data
-              .filter((x) => x.category === "personal")
+              .filter((x) => x.category === "transportation")
               .map((x) => (
                 <ListGroup.Item>
                   <Row>
@@ -207,8 +207,9 @@ const SpendingList = () => {
                   </Row>
                 </ListGroup.Item>
               ))}
+
             <ListGroup.Item>
-              <AddSpending category={"personal"} />
+              <AddSpending category={"transportation"} />
             </ListGroup.Item>
           </ListGroup>
         </Col>
