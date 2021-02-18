@@ -24,7 +24,7 @@ export function pieChartReducer(state = initialState, action) {
         data: [
           {
             id: "Empty",
-            label: "Add data to visualize expens",
+            label: "Add data to visualize expenses",
 
             color: "hsl(348, 70%, 50%)",
           },

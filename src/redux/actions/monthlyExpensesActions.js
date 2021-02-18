@@ -27,3 +27,13 @@ export const addMonthlyExpense = (amount) => async (dispatch, getState) => {
     JSON.stringify(getState().monthExpenses.data)
   );
 };
+
+export const clearMonthlyExpense = () => async (dispatch, getState) => {
+  dispatch({
+    type: "DELETE_MONTHLY_EXPENSE",
+  });
+  localStorage.setItem(
+    "montlyExpenses",
+    JSON.stringify(getState().monthExpenses.data)
+  );
+};

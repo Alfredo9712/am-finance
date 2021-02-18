@@ -14,6 +14,10 @@ export function monthlyExpenseReducer(state = initialState, action) {
         ...state,
         data: [...state.data, monthlyExpense],
       };
+    case "DELETE_MONTHLY_EXPENSE":
+      return {
+        data: [],
+      };
     default:
       return state;
   }
