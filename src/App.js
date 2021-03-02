@@ -4,6 +4,7 @@ import Homescreen from "./components/Homescreen";
 import StartScreen from "./components/StartScreen";
 import NavigationBar from "./components/NavigationBar";
 import { Container } from "react-bootstrap";
+import HistoricalData from "./components/HistoricalData";
 
 function App() {
   return (
@@ -12,6 +13,9 @@ function App() {
         <NavigationBar />
         <Switch>
           <Container>
+            <Route path="/history">
+              <HistoricalData />
+            </Route>
             <Route path="/budget">
               <Homescreen />
             </Route>

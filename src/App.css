@@ -69,3 +69,15 @@ body {
 .white {
   color: white;
 }
+.tabColor {
+  color: "white";
+}
+.margin {
+  margin-top: 27.1%;
+}
+@media screen and (max-width: 1197px) {
+  .margin {
+    margin-top: 31.4%;
+    /* color: red; */
+  }
+}

@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { clearExpenses } from "../redux/actions/expenseActions";
 import { clearPieChart } from "../redux/actions/pieChartActions";
 import { clearBudget } from "../redux/actions/budgetActions";
 import { clearPlannedBudget } from "../redux/actions/plannedBudget";
 import { clearMonthlyExpense } from "../redux/actions/monthlyExpensesActions";
+import { clearHistory } from "../redux/actions/historyActions";
+
 import { Button, Modal } from "react-bootstrap";
 
 const DeleteAll = () => {
@@ -20,6 +22,7 @@ const DeleteAll = () => {
     dispatch(clearBudget());
     dispatch(clearPlannedBudget());
     dispatch(clearMonthlyExpense());
+    dispatch(clearHistory());
   };
   return (
     <div style={{ marginBottom: "5%" }}>

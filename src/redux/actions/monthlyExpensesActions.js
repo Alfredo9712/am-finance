@@ -2,6 +2,7 @@ let data = {};
 function formatExpense(amount) {
   var date = new Date();
   var monthIndex = date.getMonth();
+
   //prettier-ignore
   const months = ["Jan", "Feb","Mar","Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
   months.map((x, index) => {

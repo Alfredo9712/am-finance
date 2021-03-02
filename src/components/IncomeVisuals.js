@@ -9,6 +9,7 @@ import { clearPieChart } from "../redux/actions/pieChartActions";
 import { clearBudget } from "../redux/actions/budgetActions";
 import { clearPlannedBudget } from "../redux/actions/plannedBudget";
 import { addMonthlyExpense } from "../redux/actions/monthlyExpensesActions";
+import { addHistory } from "../redux/actions/historyActions";
 import {} from "../redux/actions/plannedBudget";
 
 const IncomeVisuals = () => {
@@ -17,6 +18,7 @@ const IncomeVisuals = () => {
   const expensesList = useSelector((state) => state.expensesList);
 
   let spentAmount = plannedBudget - budgetAmount;
+
   const pieChart = useSelector((state) => state.pieChart);
   const dispatch = useDispatch();
   const { data } = pieChart;
@@ -25,6 +27,7 @@ const IncomeVisuals = () => {
   };
 
   const clearExpensesHandler = () => {
+    dispatch(addHistory(plannedBudget, budgetAmount, Number(spentAmount)));
     dispatch(clearExpenses());
     dispatch(clearPieChart());
     dispatch(clearBudget());

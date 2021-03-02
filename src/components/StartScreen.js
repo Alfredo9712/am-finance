@@ -19,7 +19,6 @@ const StartScreen = () => {
     textColor: "#ffffff",
   };
 
-  let input = 2000;
   let spentAmount = plannedBudget - budgetAmount;
   let percentageUtilized = Math.round(
     ((plannedBudget - budgetAmount) / plannedBudget) * 100
@@ -175,6 +174,13 @@ const StartScreen = () => {
                   }}
                 >
                   <MonthlyCard />
+                  <Link
+                    to="/history"
+                    className="btn btn-primary margin "
+                    style={{ display: "block" }}
+                  >
+                    View History <i class="fas fa-history"></i>
+                  </Link>
                 </Jumbotron>
               </Col>
             </Row>
