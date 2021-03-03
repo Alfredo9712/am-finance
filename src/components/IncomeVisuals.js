@@ -11,6 +11,7 @@ import { clearPlannedBudget } from "../redux/actions/plannedBudget";
 import { addMonthlyExpense } from "../redux/actions/monthlyExpensesActions";
 import { addHistory } from "../redux/actions/historyActions";
 import {} from "../redux/actions/plannedBudget";
+import NewMonthModal from "./NewMonthModal";
 
 const IncomeVisuals = () => {
   const budgetAmount = useSelector((state) => state.budgetAmount);
@@ -90,17 +91,16 @@ const IncomeVisuals = () => {
           },
         ]}
       />
-      <Button
+      {/* <Button
         onClick={clearExpensesHandler}
         className="bg-transparent check"
         style={{ marginTop: "0" }}
         disabled={expensesList.data.length === 0}
       >
         New Month <i class="fas fa-check-circle"></i>
-      </Button>
+      </Button> */}
+      <NewMonthModal newMonth={clearExpensesHandler} />
       <SpendingList />
-      {/* this will be used before the budget page is set up all its for is to
-      intialize budget */}
     </>
   );
 };

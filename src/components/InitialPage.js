@@ -26,7 +26,7 @@ const InitialPage = () => {
 
   return (
     <Jumbotron
-      style={{ color: "white", marginTop: "4%" }}
+      style={{ color: "white", marginTop: "4%", marginBottom: "30%" }}
       className="bg-transparent"
       fluid
     >

@@ -8,6 +8,7 @@ import MonthlyCard from "./MonthlyCard";
 import AddPlannedBudgetModal from "./AddPlannedBudgetModal";
 import InitialPage from "./InitialPage";
 import DeleteAll from "./DeleteAll";
+import Footer from "./Footer";
 const StartScreen = () => {
   const dispatch = useDispatch();
   const pieChart = useSelector((state) => state.pieChart);
@@ -188,6 +189,7 @@ const StartScreen = () => {
           <DeleteAll />
         </>
       )}
+      {/* <Footer /> */}
     </>
   );
 };

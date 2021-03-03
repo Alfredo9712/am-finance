@@ -67,7 +67,7 @@ const MonthlyCard = () => {
           }}
         >
           {" "}
-          Past months spending will show here
+          Past months spending will display here
         </h5>
       ) : (
         <>

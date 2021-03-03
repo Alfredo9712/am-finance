@@ -5,6 +5,7 @@ import StartScreen from "./components/StartScreen";
 import NavigationBar from "./components/NavigationBar";
 import { Container } from "react-bootstrap";
 import HistoricalData from "./components/HistoricalData";
+import Footer from "./components/Footer";
 
 function App() {
   return (

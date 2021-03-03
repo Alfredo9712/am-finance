@@ -13,10 +13,10 @@ const NavigationBar = () => {
           {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
-              {/* <Nav.Link as={NavLink} to="/budget">
+              <Nav.Link href="https://github.com/Alfredo9712">
                 {" "}
-                Budget <i className="fas fa-chart-pie"></i>
-              </Nav.Link> */}
+                Github Repo
+              </Nav.Link>
 
               {/* <Nav.Link as={NavLink} to="/budget" style={{ color: "#42D9C5" }}>
                 Stocks <i className="fas fa-chart-line"></i>

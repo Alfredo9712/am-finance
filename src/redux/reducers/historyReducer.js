@@ -10,10 +10,22 @@ export function historyReducer(state = initialState, action) {
   switch (action.type) {
     case "ADD_HISTORY":
       const historyItem = action.payload;
-      return {
-        ...state,
-        data: [...state.data, historyItem],
-      };
+
+      const exist = state.data.find(
+        (x) => x.currMonth === historyItem.currMonth
+      );
+
+      if (exist) {
+        return {
+          ...state,
+        };
+      } else {
+        return {
+          ...state,
+          data: [...state.data, historyItem],
+        };
+      }
+
     case "CLEAR_HISTORY":
       return {
         data: [],
