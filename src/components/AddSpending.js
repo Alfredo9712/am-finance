@@ -4,6 +4,7 @@ import { addExpense } from "../redux/actions/expenseActions";
 import { reduceBudget } from "../redux/actions/budgetActions";
 import { populatePieChart } from "../redux/actions/pieChartActions";
 import { Modal, Button, InputGroup, FormControl, Alert } from "react-bootstrap";
+import uniqid from "uniqid";
 
 const AddSpending = ({ category }) => {
   const [show, setShow] = useState(false);
@@ -31,7 +32,8 @@ const AddSpending = ({ category }) => {
         addExpense(
           Number(expenseRef.current.value),
           labelRef.current.value,
-          category
+          category,
+          uniqid()
         )
       );
       //next time add number to it that way it wont be a string

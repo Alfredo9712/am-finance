@@ -1,4 +1,4 @@
-export const addExpense = (expense, label, category) => async (
+export const addExpense = (expense, label, category, id) => async (
   dispatch,
   getState
 ) => {
@@ -8,6 +8,7 @@ export const addExpense = (expense, label, category) => async (
       expense,
       label,
       category,
+      id,
     },
   });
 
