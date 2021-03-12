@@ -1,33 +1,29 @@
 import React, { useState, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addExpense } from "../redux/actions/expenseActions";
-import { reduceBudget } from "../redux/actions/budgetActions";
+import EditIcon from "@material-ui/icons/Edit";
+import { editExpenses, deleteExpense } from "../redux/actions/expenseActions";
 import { populatePieChart } from "../redux/actions/pieChartActions";
+import { reduceBudget } from "../redux/actions/budgetActions";
 import {
   Modal,
   Button,
   InputGroup,
   FormControl,
-  Alert,
   Form,
+  Alert,
 } from "react-bootstrap";
-import uniqid from "uniqid";
-
-const AddSpending = ({ category }) => {
+import { useDispatch } from "react-redux";
+const EditExpense = ({ id, category, label, expense }) => {
   const [show, setShow] = useState(false);
-  const [invalidExpense, setInvalidExpense] = useState(false);
-  const [text, setText] = useState("");
-  const plannedBudget = useSelector((state) => state.plannedBudget);
   const dispatch = useDispatch();
-
   const expenseRef = useRef();
   const labelRef = useRef();
+  const [invalidExpense, setInvalidExpense] = useState(false);
+  const [text, setText] = useState("");
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  let id = uniqid();
-  const addExpenseHandler = (e) => {
-    e.preventDefault(); //prevents refresh
+  const editExpenseHandler = (id, e) => {
+    e.preventDefault();
     if (expenseRef.current.value === "" || labelRef.current.value === "") {
       setText("Invalid Input");
       setInvalidExpense(true);
@@ -36,41 +32,34 @@ const AddSpending = ({ category }) => {
       }, 2000);
     } else {
       handleClose();
+
       dispatch(
-        addExpense(
+        editExpenses(
           Number(expenseRef.current.value),
           labelRef.current.value,
-          category,
           id
         )
       );
-      //next time add number to it that way it wont be a string
-      // dispatch(reduceBudget(Number(expenseRef.current.value)));
-      dispatch(reduceBudget());
-      // dispatch(newReduceExpense(expenseRef.current.value));
-
-      setInvalidExpense(false);
       dispatch(populatePieChart());
+      dispatch(reduceBudget());
     }
   };
-
   return (
     <>
-      <Button
-        variant="dark"
-        block
-        onClick={handleShow}
-        disabled={plannedBudget === 0}
+      <div
+        onClick={() => {
+          handleShow();
+        }}
       >
-        <i className="fas fa-plus"></i> Add expense
-      </Button>
+        <EditIcon style={{ cursor: "pointer" }} />
+      </div>
 
       <Modal show={show} onHide={handleClose}>
         {invalidExpense === true && <Alert variant="danger">{text}</Alert>}
-
         <Modal.Header closeButton>
           <Modal.Title>
-            Add {category.charAt(0).toUpperCase() + category.slice(1)} Expense
+            Edit {category?.charAt(0).toUpperCase() + category?.slice(1)}{" "}
+            Expense
           </Modal.Title>
         </Modal.Header>
         <Form>
@@ -80,7 +69,7 @@ const AddSpending = ({ category }) => {
                 <InputGroup.Text>$</InputGroup.Text>
               </InputGroup.Prepend>
               <FormControl
-                placeholder="Add here"
+                placeholder={expense}
                 aria-label="Amount (to the nearest dollar)"
                 ref={expenseRef}
                 type="number"
@@ -94,7 +83,7 @@ const AddSpending = ({ category }) => {
                 </InputGroup.Text>
               </InputGroup.Prepend>
               <FormControl
-                placeholder="e.g Gas"
+                placeholder={label?.charAt(0).toUpperCase() + label?.slice(1)}
                 aria-label="Small"
                 aria-describedby="inputGroup-sizing-sm"
                 ref={labelRef}
@@ -104,11 +93,33 @@ const AddSpending = ({ category }) => {
             </InputGroup>
           </Modal.Body>
           <Modal.Footer>
+            <div
+              variant="danger"
+              onClick={() => {
+                dispatch(deleteExpense(id));
+                dispatch(reduceBudget());
+              }}
+              className="hover"
+              style={{
+                marginRight: "auto",
+                padding: "5px 10px",
+                cursor: "pointer",
+                color: "#A04646",
+              }}
+            >
+              <i className="fas fa-trash-alt" style={{ fontSize: "18px" }}></i>
+            </div>
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button type="submit" variant="primary" onClick={addExpenseHandler}>
-              Add
+            <Button
+              type="submit"
+              variant="primary"
+              onClick={(e) => {
+                editExpenseHandler(id, e);
+              }}
+            >
+              Save Changes
             </Button>
           </Modal.Footer>
         </Form>
@@ -117,4 +128,4 @@ const AddSpending = ({ category }) => {
   );
 };
 
-export default AddSpending;
+export default EditExpense;

@@ -40,7 +40,7 @@ const NewMonthModal = ({ newMonth }) => {
         style={{ marginTop: "0" }}
         disabled={expensesList.data.length === 0}
       >
-        New Month <i class="fas fa-check-circle"></i>
+        New Month <i className="fas fa-check-circle"></i>
       </Button>
 
       <Modal

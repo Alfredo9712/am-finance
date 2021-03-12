@@ -124,7 +124,7 @@ const TabsComponent = () => {
             </Tab.Content>
           </Col>
         </Row>
-        <Link to="/" className="btn btn-primary mt-3 mb-3">
+        <Link to="/" className="btn btn-primary mt-3 mb-4">
           Go back
         </Link>
       </Tab.Container>

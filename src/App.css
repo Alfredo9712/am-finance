@@ -81,3 +81,9 @@ body {
     /* color: red; */
   }
 }
+.hover:hover {
+  opacity: 0.87;
+}
+.hover {
+  display: flex;
+}
