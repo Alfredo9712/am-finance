@@ -48,7 +48,10 @@ const ExpenseHistoryList = ({ month }) => {
                   <h3 style={{ color: "white" }}>Not used</h3>
                   <Row>
                     <Col>
-                      <h5 style={{ color: "white" }}> ${item.budgetAmount}</h5>
+                      <h5 style={{ color: "white" }}>
+                        {" "}
+                        ${item.budgetAmount.toLocaleString()}
+                      </h5>
                     </Col>
                   </Row>
                 </Col>

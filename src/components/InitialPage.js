@@ -33,8 +33,8 @@ const InitialPage = () => {
       <Row>
         <Col md={6} xs={{ order: "last" }} md={{ order: "first" }}>
           <h1 style={{ color: "white", marginLeft: "0" }}>
-            Keep track of your expenses here. Please enter a planned budget
-            amount to proceed
+            Keep track of your expenses. Please enter a planned budget amount to
+            proceed
           </h1>
           <Form>
             {invalidExpense === true && (

@@ -13,7 +13,7 @@ const NavigationBar = () => {
           {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
-              <Nav.Link href="https://github.com/Alfredo9712">
+              <Nav.Link href="https://github.com/Alfredo9712" target="_blank">
                 {" "}
                 Github Repo
               </Nav.Link>

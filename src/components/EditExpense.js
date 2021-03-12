@@ -98,6 +98,7 @@ const EditExpense = ({ id, category, label, expense }) => {
               onClick={() => {
                 dispatch(deleteExpense(id));
                 dispatch(reduceBudget());
+                dispatch(populatePieChart());
               }}
               className="hover"
               style={{
